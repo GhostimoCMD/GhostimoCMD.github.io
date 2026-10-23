@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "be.receptenboek.app",
+      "sha256_cert_fingerprints": [
+        "98:8D:18:C8:74:2E:91:02:0C:11:4C:9E:DC:66:6E:1C:03:4D:BD:0E:A7:BC:17:7D:03:27:8F:42:F5:63:22:CA"
+      ]
+    }
+  }
+]
