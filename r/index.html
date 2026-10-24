@@ -98,6 +98,23 @@
 
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
 
+  // Uitnodiging voor een gedeelde winkellijst.
+  var lijst = location.hash.match(/^#LIJST\.([A-Za-z0-9_-]{24,64})$/);
+  if (lijst) {
+    document.title = 'Gedeelde winkellijst · Receptenboek';
+    document.getElementById('title').textContent = 'Gedeelde winkellijst';
+    document.getElementById('meta').textContent = 'Je bent uitgenodigd om samen één winkellijst bij te houden in Receptenboek.';
+    var isAndroid = /Android/i.test(navigator.userAgent);
+    var a = document.getElementById('open');
+    a.textContent = 'Openen in Receptenboek';
+    a.href = isAndroid
+      ? 'intent://lijst?lijst=' + lijst[1] + '#Intent;scheme=receptenboek;package=be.receptenboek.app;end'
+      : 'receptenboek://lijst?lijst=' + lijst[1];
+    document.querySelector('#openBox .hint').textContent = 'Je hebt de app Receptenboek nodig.';
+    document.getElementById('openBox').hidden = false;
+    return;
+  }
+
   var m = location.hash.match(/^#RB1\.([A-Za-z0-9_-]+)$/);
   var d = null;
   try { d = m ? decode(m[1]) : null; } catch (e) { d = null; }
